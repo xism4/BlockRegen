@@ -1,0 +1,26 @@
+name: BlockRegen
+version: '2.5'
+main: me.allync.blockregen.BlockRegen
+api-version: '1.21'
+loadbefore: []
+softdepend: [WorldGuard, ItemsAdder, MMOItems, MMOCore, Vault, CoinsEngine]
+author: Allync
+description: A highly optimized and configurable block regeneration plugin.
+commands:
+  blockregen:
+    description: Main command for the BlockRegen plugin.
+    aliases: [br, regen]
+  regenmultiplier:
+    description: Opens the multiplier GUI or manages multipliers.
+    aliases: [rm]
+permissions:
+  blockregen.admin:
+    description: Grants access to all BlockRegen admin commands.
+    default: op
+  blockregen.multiplier.use:
+    description: Allows player to use the /rm command to open the GUI.
+    default: true
+  blockregen.multiplier.admin:
+    description: Allows admin to use /rm admin commands like /rm set.
+    default: op
+
