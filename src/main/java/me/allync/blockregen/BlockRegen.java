@@ -136,32 +136,6 @@ public final class BlockRegen extends JavaPlugin {
         blockManager.loadBlocks();
         regionManager.loadRegions();
 
-        // Saat reload, kita harus membatalkan semua task menambang yang ada
-        // Ini bisa ditambahkan nanti jika diperlukan, tapi PlayerQuitEvent
-        // seharusnya sudah menangani pemain yang logout
-        // Untuk sekarang, kita biarkan
-
-        harvestFlowEnabled = getServer().getPluginManager().isPluginEnabled("HarvestFlow");
-        if (harvestFlowEnabled) {
-            getLogger().info("HarvestFlow found, compatibility mode enabled.");
-        }
-        mmocoreEnabled = getServer().getPluginManager().isPluginEnabled("MMOCore");
-        if (mmocoreEnabled) {
-            getLogger().info("MMOCore found, integration enabled.");
-        }
-        if (configManager.worldGuardEnabled) {
-            Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
-            if (plugin instanceof WorldGuardPlugin) {
-                worldGuardPlugin = (WorldGuardPlugin) plugin;
-                getLogger().info("WorldGuard integration enabled.");
-            } else {
-                getLogger().warning("WorldGuard not found or not a valid WorldGuard plugin. WorldGuard integration disabled.");
-                configManager.worldGuardEnabled = false;
-            }
-        }
-        if (configManager.checkForUpdates) {
-            new UpdateChecker(this).check();
-        }
     }
 
     private boolean setupEconomy() {
