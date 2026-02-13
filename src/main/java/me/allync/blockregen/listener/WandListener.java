@@ -27,23 +27,15 @@ public class WandListener implements Listener {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
-        // Check if the player is holding the wand
-        if (itemInHand == null || itemInHand.getType() == Material.AIR || !itemInHand.hasItemMeta()) {
-            return;
-        }
-
-        if (itemInHand == null || !itemInHand.hasItemMeta() ||
-            !itemInHand.getType().toString().equals(plugin.getConfigManager().wandMaterial.toString()) ||
-            !itemInHand.getItemMeta().getDisplayName().equals(plugin.getConfigManager().wandName)) {
-            return;
-        }
-
-        // Only process for the main hand to prevent double messages
-        if (event.getHand() != EquipmentSlot.HAND) {
-            return;
-        }
-
-        if (!player.hasPermission("blockregen.admin")) {
+        //Do not loop like 3 times for the same
+        if (event.getHand() != EquipmentSlot.HAND
+                || !player.hasPermission("blockregen.admin")
+                || itemInHand == null
+                || itemInHand.getType() == Material.AIR
+                || !itemInHand.hasItemMeta()
+                || itemInHand.getType() != plugin.getConfigManager().wandMaterial
+                || !itemInHand.getItemMeta().getDisplayName()
+                .equals(plugin.getConfigManager().wandName)) {
             return;
         }
 

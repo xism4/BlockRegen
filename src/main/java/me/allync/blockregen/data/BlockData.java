@@ -65,7 +65,7 @@ public class BlockData {
                         }
                     }
                 } catch (Exception e) {
-                    System.err.println("[BlockRegen] Gagal memuat salah satu tool requirement di blok '" + section.getName() + "'. Entri: " + toolObject.toString() + ". Error: " + e.getMessage());
+                    System.err.println("[BlockRegen] Gagal memuat salah satu tool requirement di blok '" + section.getName() + "'. Entri: " + toolObject + ". Error: " + e.getMessage());
                 }
             }
         }
@@ -150,16 +150,16 @@ public class BlockData {
     }
 
     private String getVanillaExpDrop(String blockName) {
-        switch (blockName.toUpperCase()) {
-            case "COAL_ORE": case "DEEPSLATE_COAL_ORE": return "0-2";
-            case "LAPIS_ORE": case "DEEPSLATE_LAPIS_ORE": return "2-5";
-            case "REDSTONE_ORE": case "DEEPSLATE_REDSTONE_ORE": return "1-5";
-            case "DIAMOND_ORE": case "DEEPSLATE_DIAMOND_ORE": return "3-7";
-            case "EMERALD_ORE": case "DEEPSLATE_EMERALD_ORE": return "3-7";
-            case "NETHER_QUARTZ_ORE": return "2-5";
-            case "NETHER_GOLD_ORE": return "0-1";
-            default: return "0";
-        }
+        return switch (blockName.toUpperCase()) {
+            case "COAL_ORE", "DEEPSLATE_COAL_ORE" -> "0-2";
+            case "LAPIS_ORE", "DEEPSLATE_LAPIS_ORE" -> "2-5";
+            case "REDSTONE_ORE", "DEEPSLATE_REDSTONE_ORE" -> "1-5";
+            case "DIAMOND_ORE", "DEEPSLATE_DIAMOND_ORE" -> "3-7";
+            case "EMERALD_ORE", "DEEPSLATE_EMERALD_ORE" -> "3-7";
+            case "NETHER_QUARTZ_ORE" -> "2-5";
+            case "NETHER_GOLD_ORE" -> "0-1";
+            default -> "0";
+        };
     }
 
     public Material getReplacedBlock() {

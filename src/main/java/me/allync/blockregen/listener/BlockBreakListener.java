@@ -172,7 +172,7 @@ public class BlockBreakListener implements Listener {
             for (ToolRequirement requirement : data.getRequiredTools()) {
                 if (requirement.matches(itemInHand)) {
                     toolMatches = true;
-                    debug(player, blockIdentifier, "&aTool requirement met: &f" + requirement.toString());
+                    debug(player, blockIdentifier, "&aTool requirement met: &f" + requirement);
                     break;
                 }
             }
